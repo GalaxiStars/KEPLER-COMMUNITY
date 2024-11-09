@@ -1,1 +1,1 @@
-# KEPLER-Community
+# KEPLER Community
