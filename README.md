@@ -6,14 +6,14 @@
 
 <div align="center">
 
-[![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=classic-square&logo=python&logoColor=white&labelColor=3776AB)](https://www.python.org/)
-[![PySide6](https://img.shields.io/badge/PySide6-6.0%2B-41CD52?style=classic-square&logo=qt&logoColor=white&labelColor=41CD52)](https://www.qt.io/qt-for-python)
-[![License](https://img.shields.io/badge/License-MIT-FFD700?style=classic-square&logo=license&logoColor=white&labelColor=FFD700)](LICENSE.md)
-[![Status](https://img.shields.io/badge/Status-Alpha-FF0000?style=classic-square&logo=statuspage&logoColor=white&labelColor=FF0000)](https://github.com/TheGalaxyStars/KEPLER-COMMUNITY)
+[![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=flat-square&logo=python&logoColor=white&labelColor=3776AB)](https://www.python.org/)
+[![PySide6](https://img.shields.io/badge/PySide6-6.0%2B-41CD52?style=flat-square&logo=qt&logoColor=white&labelColor=41CD52)](https://www.qt.io/qt-for-python)
+[![License](https://img.shields.io/badge/License-MIT-FFD700?style=flat-square&logo=license&logoColor=white&labelColor=FFD700)](LICENSE.md)
+[![Status](https://img.shields.io/badge/Status-Alpha-FF0000?style=flat-square&logo=statuspage&logoColor=white&labelColor=FF0000)](https://github.com/TheGalaxyStars/KEPLER-COMMUNITY)
 
 </div>
 
-<img src="Welcome-To-KEPLER-COMMUNITY.png" style="border-radius: 20px;" alt="WELCOME TO KEPLER COMMUNITY">
+<img src="Welcome-To-KEPLER-COMMUNITY.png" alt="WELCOME TO KEPLER COMMUNITY">
 <p align="center"><small><i>Note: This artwork is not created by us or anyone associated with KEPLER COMMUNITY or TheGalaxyStars. We do not own or claim rights to the character depicted in this artwork. We have only used it for the purpose of theming the browser. We only added a small text "WELCOME TO KEPLER COMMUNITY" to the artwork to make it fit the theme of the browser.</i></small></p>
 
 **KEPLER COMMUNITY** is a lightweight, custom QWebEngine browser which is Chromium-based engine focused on privacy. Built with Python and PySide6, it aims to provide a secure, customizable, and user-friendly browsing experience while maintaining transparency and community involvement.
