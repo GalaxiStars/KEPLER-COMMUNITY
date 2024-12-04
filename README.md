@@ -14,7 +14,8 @@
 </div>
 
 <img src="Welcome-To-KEPLER-COMMUNITY.png" alt="WELCOME TO KEPLER COMMUNITY">
-<p align="center"><small><i>Note: This artwork is not created by us or anyone associated with KEPLER COMMUNITY or TheGalaxyStars. We do not own or claim rights to the character depicted in this artwork. We have only used it for the purpose of theming the browser. We only added a small text "WELCOME TO KEPLER COMMUNITY" to the artwork to make it fit the theme of the browser.</i></small></p>
+
+> **Note:** This artwork is not created by us or anyone associated with KEPLER COMMUNITY or TheGalaxyStars. We do not own or claim rights to the character depicted in this artwork. We have only used it for the purpose of theming the browser. We only added a small text "WELCOME TO KEPLER COMMUNITY" to the artwork to make it fit the theme of the browser.
 
 **KEPLER COMMUNITY** is a lightweight, custom QWebEngine browser which is Chromium-based engine focused on privacy. Built with Python and PySide6, it aims to provide a secure, customizable, and user-friendly browsing experience while maintaining transparency and community involvement.
 
@@ -101,7 +102,8 @@ Once the application is running, you can:
 ## Contributing
 
 We welcome contributions! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) guide before getting started.
-Note: The use of AI tools such as ChatGPT, Claude, Copilot, Perplexity AI, Gemini, or Cursor AI is permitted. However, please ensure that these tools are used responsibly and do not harm the project or the community. Validate the code and information provided, conduct thorough research, and test your contributions before submitting a pull request.
+
+> **Note:** The use of AI tools such as ChatGPT, Claude, Copilot, Perplexity AI, Gemini, or Cursor AI is permitted. However, please ensure that these tools are used responsibly and do not harm the project or the community. Validate the code and information provided, conduct thorough research, and test your contributions before submitting a pull request.
 
 ### Simple Quick Start for Contributors
 
