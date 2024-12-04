@@ -1,0 +1,4 @@
+PySide6>=6.0.0
+pyaudio>=0.2.11
+psutil>=5.8.0
+pywin32>=228
