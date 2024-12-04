@@ -101,6 +101,7 @@ Once the application is running, you can:
 ## Contributing
 
 We welcome contributions! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) guide before getting started.
+Note: The use of AI tools such as ChatGPT, Claude, Copilot, Perplexity AI, Gemini, or Cursor AI is permitted. However, please ensure that these tools are used responsibly and do not harm the project or the community. Validate the code and information provided, conduct thorough research, and test your contributions before submitting a pull request.
 
 ### Simple Quick Start for Contributors
 
