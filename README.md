@@ -8,7 +8,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=flat-square&logo=python&logoColor=white&labelColor=3776AB)](https://www.python.org/)
 [![PySide6](https://img.shields.io/badge/PySide6-6.0%2B-41CD52?style=flat-square&logo=qt&logoColor=white&labelColor=41CD52)](https://www.qt.io/qt-for-python)
-[![License](https://img.shields.io/badge/License-GPL3.0-FFD700?style=flat-square&logo=license&logoColor=white&labelColor=FFD700)](LICENSE.md)
+[![License](https://img.shields.io/badge/License-GNUAGPL3.0-FFD700?style=flat-square&logo=license&logoColor=white&labelColor=FFD700)](LICENSE.md)
 [![Status](https://img.shields.io/badge/Status-Alpha-FF0000?style=flat-square&logo=statuspage&logoColor=white&labelColor=FF0000)](https://github.com/TheGalaxyStars/KEPLER-COMMUNITY)
 
 </div>
@@ -179,7 +179,7 @@ We welcome contributions! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) gui
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+This project is licensed under the GNU AGPLv3 License - see the [LICENSE](LICENSE.md) file for details.
 
 ## Acknowledgments
 
