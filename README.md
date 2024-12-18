@@ -68,7 +68,7 @@ Follow these steps to set up **KEPLER COMMUNITY** on your system:
     cd KEPLER-COMMUNITY
     ```
 
-3. **Create a Virtual Environment (Recommended):**
+3. **Create a Virtual Environment (Optional, you can safely skip):**
 
     ```bash
     python -m venv venv
