@@ -713,8 +713,7 @@ class Browser(QMainWindow):
 
 if __name__ == '__main__':
     resource_manager = ResourceManager()
-    resource_manager.assign_process_to_job()
-
+    
     app = QApplication([])
     app.setApplicationName("KEPLER COMMUNITY")
     window = Browser()

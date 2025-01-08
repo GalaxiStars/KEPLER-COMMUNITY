@@ -3,10 +3,6 @@ import os
 import time
 import threading
 from PySide6.QtCore import QObject, Signal, QTimer
-import win32job
-import win32process
-import win32api
-import win32con
 import logging
 
 # Set up logging
@@ -16,13 +12,6 @@ logging.basicConfig(
     filename='kepler_resource.log'
 )
 logger = logging.getLogger('ResourceManager')
-
-# Windows-specific job object constants
-JOB_OBJECT_LIMIT_PROCESS_MEMORY = 0x00000100
-JOB_OBJECT_LIMIT_JOB_MEMORY = 0x00000200
-JOB_OBJECT_LIMIT_WORKINGSET = 0x00000001
-JOB_OBJECT_LIMIT_PROCESS_TIME = 0x00000002
-JOB_OBJECT_CPU_RATE_CONTROL = 0x00000004
 
 class ResourceManager(QObject):
     resource_update = Signal(dict)
@@ -37,40 +26,6 @@ class ResourceManager(QObject):
         self.last_net_io = psutil.net_io_counters()
         self.last_time = time.time()
         
-        try:
-            # Create a new job object
-            security_attributes = None
-            self.job = win32job.CreateJobObject(security_attributes, f"KEPLER_JOB_{os.getpid()}")
-            
-            # Set up basic limits with all required fields
-            job_info = {
-                'BasicLimitInformation': {
-                    'PerProcessUserTimeLimit': 0,
-                    'PerJobUserTimeLimit': 0,
-                    'LimitFlags': (JOB_OBJECT_LIMIT_PROCESS_MEMORY | 
-                                 JOB_OBJECT_LIMIT_JOB_MEMORY |
-                                 JOB_OBJECT_LIMIT_WORKINGSET),
-                    'MinimumWorkingSetSize': 0,
-                    'MaximumWorkingSetSize': 0,
-                    'ActiveProcessLimit': 0,
-                    'Affinity': 0,
-                    'PriorityClass': 0,
-                    'SchedulingClass': 0
-                }
-            }
-            
-            win32job.SetInformationJobObject(
-                self.job,
-                win32job.JobObjectBasicLimitInformation,
-                job_info
-            )
-            
-            logger.info("Job object created successfully")
-            self.assign_process_to_job()
-        except Exception as e:
-            logger.error(f"Failed to create job object: {e}")
-            self.job = None
-
         # Initialize timers after moving to the main thread
         QTimer.singleShot(0, self.setup_timers)
 
@@ -83,48 +38,12 @@ class ResourceManager(QObject):
         self.enforce_timer.timeout.connect(self.enforce_limits)
         self.enforce_timer.start(500)  # Check limits every 500ms
 
-    def assign_process_to_job(self):
-        if not self.job:
-            logger.error("No job object available")
-            return False
-
-        try:
-            handle = win32api.OpenProcess(win32con.PROCESS_ALL_ACCESS, False, os.getpid())
-            win32job.AssignProcessToJobObject(self.job, handle)
-            win32api.CloseHandle(handle)
-            logger.info("Process assigned to job object successfully")
-            return True
-        except Exception as e:
-            logger.error(f"Failed to assign process to job: {e}")
-            return False
-
     def set_cpu_limit(self, limit_percent):
         try:
             self.cpu_limit = limit_percent
-            if self.job and limit_percent is not None:
-                # Convert percentage to CPU cycles (1% = 100 cycles)
-                cpu_rate = int(limit_percent * 100)
-                
-                job_info = {
-                    'BasicLimitInformation': {
-                        'PerProcessUserTimeLimit': 0,
-                        'PerJobUserTimeLimit': 0,
-                        'LimitFlags': JOB_OBJECT_CPU_RATE_CONTROL,
-                        'MinimumWorkingSetSize': 0,
-                        'MaximumWorkingSetSize': 0,
-                        'ActiveProcessLimit': 0,
-                        'Affinity': 0,
-                        'PriorityClass': 0,
-                        'SchedulingClass': 0
-                    },
-                    'CpuRate': cpu_rate
-                }
-                
-                win32job.SetInformationJobObject(
-                    self.job,
-                    win32job.JobObjectBasicLimitInformation,
-                    job_info
-                )
+            if limit_percent is not None:
+                # Set process priority to below normal if CPU limit is set
+                self.process.nice(10)  # Higher nice value = lower priority (Unix-like systems)
                 logger.info(f"CPU limit set to {limit_percent}%")
         except Exception as e:
             logger.error(f"Failed to set CPU limit: {e}")
@@ -132,38 +51,13 @@ class ResourceManager(QObject):
     def set_memory_limit(self, limit_mb):
         try:
             self.memory_limit = limit_mb
-            if self.job and limit_mb is not None:
-                limit_bytes = limit_mb * 1024 * 1024  # Convert MB to bytes
+            if limit_mb is not None:
+                # We'll enforce this in enforce_limits()
+                logger.info(f"Memory limit set to {limit_mb}MB")
                 
-                job_info = {
-                    'BasicLimitInformation': {
-                        'PerProcessUserTimeLimit': 0,
-                        'PerJobUserTimeLimit': 0,
-                        'LimitFlags': (JOB_OBJECT_LIMIT_PROCESS_MEMORY | 
-                                     JOB_OBJECT_LIMIT_JOB_MEMORY |
-                                     JOB_OBJECT_LIMIT_WORKINGSET),
-                        'MinimumWorkingSetSize': 0,
-                        'MaximumWorkingSetSize': limit_bytes,
-                        'ActiveProcessLimit': 0,
-                        'Affinity': 0,
-                        'PriorityClass': 0,
-                        'SchedulingClass': 0
-                    },
-                    'JobMemoryLimit': limit_bytes,
-                    'ProcessMemoryLimit': limit_bytes
-                }
-                
-                win32job.SetInformationJobObject(
-                    self.job,
-                    win32job.JobObjectExtendedLimitInformation,
-                    job_info
-                )
-                
-                logger.info(f"Memory limit set to {limit_mb}MB ({limit_bytes} bytes)")
-                
-                # Also set process priority
+                # Set process priority to below normal
                 try:
-                    self.process.nice(psutil.BELOW_NORMAL_PRIORITY_CLASS)
+                    self.process.nice(10)
                     logger.info("Process priority adjusted")
                 except Exception as e:
                     logger.warning(f"Failed to adjust process priority: {e}")
@@ -181,22 +75,22 @@ class ResourceManager(QObject):
                 current_memory = self.process.memory_info().rss / (1024 * 1024)
                 if current_memory > self.memory_limit:
                     # Try to free some memory
-                    self.process.nice(psutil.BELOW_NORMAL_PRIORITY_CLASS)
+                    self.process.nice(10)
                     logger.warning(f"Memory usage ({current_memory:.2f}MB) exceeded limit ({self.memory_limit}MB)")
                     
                     # Force garbage collection
                     import gc
                     gc.collect()
                     
-                    # Try to reduce working set
-                    try:
-                        handle = win32api.OpenProcess(win32con.PROCESS_ALL_ACCESS, False, os.getpid())
-                        win32process.SetProcessWorkingSetSize(handle, -1, -1)
-                        win32api.CloseHandle(handle)
-                    except Exception as e:
-                        logger.error(f"Failed to reduce working set: {e}")
-                else:
-                    self.process.nice(psutil.NORMAL_PRIORITY_CLASS)
+            if self.cpu_limit:
+                cpu_percent = self.process.cpu_percent()
+                if cpu_percent > self.cpu_limit:
+                    # Increase nice value to reduce CPU priority
+                    current_nice = self.process.nice()
+                    if current_nice < 19:  # Max nice value on Unix-like systems
+                        self.process.nice(current_nice + 1)
+                    logger.warning(f"CPU usage ({cpu_percent}%) exceeded limit ({self.cpu_limit}%)")
+                
         except Exception as e:
             logger.error(f"Error enforcing limits: {e}")
 
@@ -239,10 +133,3 @@ class ResourceManager(QObject):
         except Exception as e:
             logger.error(f"Error getting current usage: {e}")
             return None
-
-    def __del__(self):
-        try:
-            if self.job:
-                win32job.TerminateJobObject(self.job, 0)
-        except Exception as e:
-            logger.error(f"Error cleaning up job object: {e}")
