@@ -15,7 +15,7 @@
 
 <img src="Welcome-To-KEPLER-COMMUNITY.png" alt="WELCOME TO KEPLER COMMUNITY">
 
-> **Note:** This artwork is not created by us or anyone associated with KEPLER COMMUNITY or TheGalaxyStars. We do not own or claim rights to the character depicted in this artwork. We have only used it for the purpose of theming the browser. We only added a small text "WELCOME TO KEPLER COMMUNITY" to the artwork to make it fit the theme of the browser.
+> **Note:** This artwork is not created by me or anyone associated with KEPLER COMMUNITY or GalaxiStars. I do not own or claim rights to the character depicted in this artwork. I have only used it for the purpose of theming the browser. I only added a small text "WELCOME TO KEPLER COMMUNITY" to the artwork to make it fit the theme of the browser.
 
 **KEPLER COMMUNITY** is a lightweight, custom QWebEngine browser which is Chromium-based engine focused on privacy. Built with Python and PySide6, it aims to provide a secure, customizable, and user-friendly browsing experience while maintaining transparency and community involvement.
 
@@ -101,7 +101,7 @@ Once the application is running, you can:
 
 ## Contributing
 
-We welcome contributions! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) guide before getting started.
+I welcome contributions! Please read my [CONTRIBUTING.md](CONTRIBUTING.md) guide before getting started.
 
 > **Note:** The use of AI tools such as ChatGPT, Claude, Copilot, Perplexity AI, Gemini, or Cursor AI is permitted. However, please ensure that these tools are used responsibly and do not harm the project or the community. Validate the code and information provided, conduct thorough research, and test your contributions before submitting a pull request.
 
@@ -189,9 +189,9 @@ This project is licensed under the GNU AGPLv3 License - see the [LICENSE](LICENS
 
 ## Contact & Support
 
-- **Bug Reports:** Create an [Issue](https://github.com/TheGalaxyStars/KEPLER-COMMUNITY/issues) or [Check Discord channel bugs in the server](https://discord.com/channels/1296318224744317001/1313874936070406195)
-- **Discord:** Contact us on [Discord](https://discord.gg/fvEQNKbkvP)
+- **Bug Reports:** Create an [Issue](https://github.com/GalaxiStars/KEPLER-COMMUNITY/issues) or [Check Discord channel bugs in the server](https://discord.com/channels/1296318224744317001/1313874936070406195)
+- **Discord:** Contact me on [Discord](https://discord.gg/fvEQNKbkvP)
 
 ---
 
-<p align="center">Made with ✨ by <a href="https://github.com/TheGalaxyStars">TheGalaxyStars</a> | Founded by The Owner/CEO <a href="https://github.com/NIGHTST4RS">NightStars</a></p>
+<p align="center">Made with ✨ by <a href="https://github.com/GalaxiStars">GalaxiStars</a> | Founded by The Owner/CEO <a href="https://github.com/NIGHTST4RS">NightStars</a></p>
