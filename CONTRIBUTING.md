@@ -63,6 +63,6 @@ Consistency is important for the readability of the project. Please follow these
 If you need assistance, you can:
 
 - **Join our [Discord server](https://discord.gg/fvEQNKbkvP).**
-- **Ask in the [GitHub discussions](https://github.com/TheGalaxyStars/KEPLER-COMMUNITY/discussions) or Discord server.**
+- **Ask in the [GitHub discussions](https://github.com/GalaxiStars/KEPLER-COMMUNITY/discussions) or Discord server.**
 
 Thank you for contributing! ✨
