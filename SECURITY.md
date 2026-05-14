@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-We provide security updates for the following versions of KEPLER COMMUNITY Browser. Any release not on this list is no longer supported and may not receive security updates.
+I provide security updates for the following versions of KEPLER COMMUNITY Browser. Any release not on this list is no longer supported and may not receive security updates.
 
 | Version | Supported      |
 |---------|----------------|
@@ -11,17 +11,16 @@ We provide security updates for the following versions of KEPLER COMMUNITY Brows
 
 ## Vulnerability Disclosure Process
 
-We follow a responsible disclosure process to ensure that vulnerabilities are addressed promptly and effectively.
+I follow a responsible disclosure process to ensure that vulnerabilities are addressed promptly and effectively.
 
 1. **Report a Vulnerability:** Follow the [Reporting a Vulnerability](#reporting-a-vulnerability) section.
-2. **Acknowledgment:** We will acknowledge receipt of your report within 48 hours.
-3. **Assessment:** Our security team will assess the vulnerability and determine its severity.
-4. **Resolution:** We will work on a fix and keep you updated on our progress.
-5. **Disclosure:** Once the vulnerability is resolved, we may disclose it publicly in coordination with you.
+2. **Acknowledgment:** I will acknowledge receipt of your report within 48 hours.
+3. **Resolution:** I will work on a fix and keep you updated on our progress.
+4. **Disclosure:** Once the vulnerability is resolved, we may disclose it publicly in coordination with you.
 
 ## Security Practices
 
-We adhere to the following security practices to maintain the integrity and safety of **KEPLER COMMUNITY** Browser:
+I adhere to the following security practices to maintain the integrity and safety of **KEPLER COMMUNITY** Browser:
 
 - **Code Reviews:** All code changes undergo thorough code reviews to identify potential security issues.
 - **Dependency Management:** Regularly update dependencies to patch known vulnerabilities.
@@ -52,8 +51,8 @@ Keep your KEPLER COMMUNITY Browser up to date to ensure you have the latest secu
 
 ## Contact
 
-For any other security-related questions or concerns, please reach out to our security team at [mplf.02@pm.me](mailto:mplf.02@pm.me).
+For any other security-related questions or concerns, please reach out to [nightstars@galaxistars](mailto:nightstars@galaxistars).
 
 ---
 
-<p align="center">If you have further questions or need assistance, feel free to contact us through our [Discord Server](https://discord.gg/fvEQNKbkvP).</p>
+<p align="center">If you have further questions or need assistance, feel free to contact me through our [Discord Server](https://discord.gg/fvEQNKbkvP).</p>
